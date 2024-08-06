@@ -1,0 +1,1 @@
+# MDLabs.TypeChat-CriticalSqlAnalysis
