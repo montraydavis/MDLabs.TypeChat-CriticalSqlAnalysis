@@ -1,0 +1,24 @@
+{
+    "prompts": [
+      {
+        "id": "analyzeStoredProcedure",
+        "template": "As a critical SQL code reviewer, evaluate the following stored procedure on code quality metrics (scale 1-10). Be thorough and highly critical:\n\n- Identify flaws, potential issues, and improvement areas\n- Ensure top code quality through stringent evaluation\n- Point out even minor infractions\n- Maintain structure\n\n{{sqlContents}}",
+        "parameters": {
+          "sqlContents": {
+            "type": "string",
+            "description": "The SQL stored procedure to analyze"
+          }
+        }
+      },
+      {
+        "id": "generateDocumentation",
+        "template": "{{sqlContents}}",
+        "parameters": {
+          "sqlContents": {
+            "type": "string",
+            "description": "The SQL stored procedure to generate documentation for"
+          }
+        }
+      }
+    ]
+  }

@@ -1,0 +1,58 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <Target Name="CopyResources" AfterTargets="PostBuildEvent">
+    <ItemGroup>
+      <ResourceFiles Include="$(ProjectDir)Resources\**\*" />
+    </ItemGroup>
+    <Copy SourceFiles="@(ResourceFiles)" DestinationFolder="$(OutputPath)Resources\%(RecursiveDir)" />
+  </Target>
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="8.0.0" />
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="8.0.0" />
+    <PackageReference Include="AutoGen" Version="0.0.17" />
+    <PackageReference Include="MediatR" Version="12.4.0" />
+    <PackageReference Include="MediatR.Extensions.Autofac.DependencyInjection" Version="12.1.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
+    <PackageReference Include="Prompty" Version="0.0.6-alpha" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Resources/SqlScripts/" />
+    <Folder Include="Resources/SqlScripts/Negative/" />
+    <Folder Include="Resources/SqlScripts/Neutral/" />
+    <Folder Include="Resources/SqlScripts/Positive/" />
+    <Folder Include="Models\AsyncRequests\" />
+    <Folder Include="Agents\Factories\" />
+    <Folder Include="Handlers\Queries\" />
+    <Folder Include="Handlers\Commands\" />
+    <Folder Include="Handlers\Requests\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Models\AsyncRequests\" />
+    <None Remove="Agents\Factories\" />
+    <None Remove="Handlers\Queries\" />
+    <None Remove="Handlers\Commands\" />
+    <None Remove="Handlers\Requests\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="Resources\Prompts\Documentation\Instruct-Metrics.user.md">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\Prompts\Documentation\Instruct-Metrics.system.md">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+</Project>
